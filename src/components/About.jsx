@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { GraduationCap, Briefcase, Heart, Target } from 'lucide-react'
+import { GraduationCap, Briefcase, Heart, Target, Lightbulb } from 'lucide-react'
 
 /* ===== ABOUT ME SECTION =====
  * Personal introduction section
@@ -32,6 +32,11 @@ export default function About() {
       icon: <Heart size={20} />,
       label: 'Đam mê',
       value: 'Xây dựng ứng dụng thực tế',
+    },
+    {
+      icon: <Lightbulb size={20} />,
+      label: 'Thế mạnh',
+      value: 'Ứng dụng AI & Nhiều ý tưởng',
     },
   ]
 
@@ -76,6 +81,14 @@ export default function About() {
               Ngoài kỹ năng chuyên môn, tôi có{' '}
               <span className="text-text-primary font-medium">1 năm kinh nghiệm làm việc trong ngành F&B</span>,
               điều này giúp tôi rèn luyện kỹ năng giao tiếp, tính cẩn thận với dữ liệu và khả năng làm việc dưới áp lực. Tôi tin rằng những kỹ năng mềm này giúp tôi trở thành một lập trình viên có thể hiểu được cả góc độ kỹ thuật và tâm lý người dùng.
+            </p>
+
+            <p className="text-text-secondary leading-relaxed text-base sm:text-lg">
+              Một trong những thế mạnh lớn nhất của tôi là khả năng{' '}
+              <span className="text-text-primary font-medium">ứng dụng hiệu quả các công cụ AI</span>{' '}
+              vào quy trình làm việc nhằm tối ưu hóa hiệu suất và nâng cao chất lượng code. Đồng thời, tôi luôn mang đến{' '}
+              <span className="text-primary font-medium">nhiều ý tưởng sáng tạo</span>{' '}
+              để cùng team xây dựng và phát triển sản phẩm.
             </p>
 
             <p className="text-text-secondary leading-relaxed text-base sm:text-lg">

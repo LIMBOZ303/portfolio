@@ -56,7 +56,7 @@ const skillGroups = [
     color: 'from-sky-400 to-indigo-500',
     bgColor: 'bg-sky-400/10',
     textColor: 'text-sky-400',
-    skills: ['Giao tiếp', 'Làm việc nhóm', 'Giải quyết vấn đề', 'Chăm sóc khách hàng', 'Trách nhiệm'],
+    skills: ['Ứng dụng AI (ChatGPT/Claude/...)', 'Lên ý tưởng sáng tạo', 'Giao tiếp', 'Làm việc nhóm', 'Giải quyết vấn đề', 'Trách nhiệm'],
   },
 ]
 

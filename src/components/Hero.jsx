@@ -110,46 +110,105 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.3 }}
             className="flex justify-center order-1 md:order-2"
           >
-            <div className="relative">
-              {/* Main avatar container */}
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 animate-float">
-                {/* Outer glow ring */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-cyan-400 to-accent p-[2px] animate-pulse-glow">
-                  <div className="w-full h-full rounded-full bg-dark-800 flex items-center justify-center overflow-hidden">
-                    {/* === REPLACE WITH YOUR PHOTO ===
-                         Put your photo in /public/avatar.jpg and uncomment below:
-                         <img src="/avatar.jpg" alt="Illusion1" className="w-full h-full object-cover" />
-                    */}
-                    <div className="text-center">
-                      <div className="text-6xl sm:text-7xl font-bold gradient-text">IL</div>
-                      <p className="text-xs text-text-muted mt-2 font-mono">lập trình viên</p>
+            <div className="relative" style={{ perspective: "1000px" }}>
+              <motion.div 
+                className="relative w-64 h-64 sm:w-80 sm:h-80 animate-float"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: "preserve-3d" }}>
+                  
+                  {/* Outer glow ring and Avatar (Center) */}
+                  <div className="absolute inset-0 w-full h-full rounded-full bg-gradient-to-br from-primary via-cyan-400 to-accent p-[2px] animate-pulse-glow cursor-crosshair" style={{ transform: "translateZ(0px)" }}>
+                    <div className="w-full h-full rounded-full bg-dark-800 flex items-center justify-center overflow-hidden relative group">
+                      {/* Hover overlay effect */}
+                      <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500 z-10 pointer-events-none" />
+                      
+                      {/* === REPLACE WITH YOUR PHOTO ===
+                           Put your photo in /public/avatar.jpg and uncomment below:
+                           <img src="/avatar.jpg" alt="Illusion1" className="w-full h-full object-cover" />
+                      */}
+                      <div className="text-center group-hover:scale-110 transition-transform duration-500">
+                        <div className="text-6xl sm:text-7xl font-bold gradient-text drop-shadow-[0_0_15px_rgba(6,182,212,0.5)]">IL</div>
+                        <p className="text-xs text-text-muted mt-2 font-mono group-hover:text-primary transition-colors">lập trình viên</p>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Floating badges around avatar */}
-                <motion.div
-                  animate={{ y: [-5, 5, -5] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -top-4 -right-4 px-3 py-2 glass-card rounded-lg text-xs font-mono text-primary"
-                >
-                  {'<React />'}
-                </motion.div>
-                <motion.div
-                  animate={{ y: [5, -5, 5] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -bottom-4 -left-4 px-3 py-2 glass-card rounded-lg text-xs font-mono text-accent"
-                >
-                  📱 Mobile
-                </motion.div>
-                <motion.div
-                  animate={{ y: [-3, 7, -3] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute top-1/2 -right-8 px-3 py-2 glass-card rounded-lg text-xs font-mono text-cyan-300"
-                >
-                  {'{ JS }'}
-                </motion.div>
-              </div>
+                  {/* 3D Orbital System */}
+                  <div className="absolute inset-0 pointer-events-none" style={{ transformStyle: "preserve-3d", transform: "rotateX(65deg) rotateY(-15deg)" }}>
+                    
+                    {/* Visual Orbit Ring */}
+                    <div className="absolute -inset-6 sm:-inset-10 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(6,182,212,0.1)]" />
+
+                    {/* Planet 1: React */}
+                    <motion.div
+                      className="absolute inset-0"
+                      style={{ transformStyle: "preserve-3d" }}
+                      animate={{ rotateZ: [0, 360] }}
+                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    >
+                      <div className="absolute -top-6 sm:-top-10 left-1/2 -translate-x-1/2" style={{ transformStyle: "preserve-3d" }}>
+                        <motion.div
+                          style={{ transformStyle: "preserve-3d" }}
+                          animate={{ rotateZ: [0, -360] }} // Counter-rotate to keep upright
+                          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                        >
+                          <div style={{ transform: "rotateX(-65deg) rotateY(15deg)" }} className="pointer-events-auto">
+                            <div className="px-3 py-2 glass-card rounded-lg text-xs font-mono text-primary shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:scale-110 transition-transform cursor-pointer">
+                              {'<React />'}
+                            </div>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+
+                    {/* Planet 2: Mobile */}
+                    <motion.div
+                      className="absolute inset-0"
+                      style={{ transformStyle: "preserve-3d" }}
+                      animate={{ rotateZ: [120, 480] }}
+                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    >
+                      <div className="absolute -top-6 sm:-top-10 left-1/2 -translate-x-1/2" style={{ transformStyle: "preserve-3d" }}>
+                        <motion.div
+                          style={{ transformStyle: "preserve-3d" }}
+                          animate={{ rotateZ: [-120, -480] }}
+                          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                        >
+                          <div style={{ transform: "rotateX(-65deg) rotateY(15deg)" }} className="pointer-events-auto">
+                            <div className="px-3 py-2 glass-card rounded-lg text-xs font-mono text-accent shadow-[0_0_15px_rgba(139,92,246,0.3)] hover:scale-110 transition-transform cursor-pointer">
+                              📱 Mobile
+                            </div>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+
+                    {/* Planet 3: JS */}
+                    <motion.div
+                      className="absolute inset-0"
+                      style={{ transformStyle: "preserve-3d" }}
+                      animate={{ rotateZ: [240, 600] }}
+                      transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                    >
+                      <div className="absolute -top-6 sm:-top-10 left-1/2 -translate-x-1/2" style={{ transformStyle: "preserve-3d" }}>
+                        <motion.div
+                          style={{ transformStyle: "preserve-3d" }}
+                          animate={{ rotateZ: [-240, -600] }}
+                          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+                        >
+                          <div style={{ transform: "rotateX(-65deg) rotateY(15deg)" }} className="pointer-events-auto">
+                            <div className="px-3 py-2 glass-card rounded-lg text-xs font-mono text-cyan-300 shadow-[0_0_15px_rgba(103,232,249,0.3)] hover:scale-110 transition-transform cursor-pointer">
+                              {'{ JS }'}
+                            </div>
+                          </div>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
