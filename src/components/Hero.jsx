@@ -111,19 +111,19 @@ export default function Hero() {
             className="flex justify-center order-1 md:order-2"
           >
             <div className="relative" style={{ perspective: "1000px" }}>
-              <motion.div 
+              <motion.div
                 className="relative w-64 h-64 sm:w-80 sm:h-80 animate-float"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 <div className="absolute inset-0 flex items-center justify-center" style={{ transformStyle: "preserve-3d" }}>
-                  
+
                   {/* Outer glow ring and Avatar (Center) */}
                   <div className="absolute inset-0 w-full h-full rounded-full bg-gradient-to-br from-primary via-cyan-400 to-accent p-[2px] animate-pulse-glow cursor-crosshair" style={{ transform: "translateZ(0px)" }}>
                     <div className="w-full h-full rounded-full bg-dark-800 flex items-center justify-center overflow-hidden relative group">
                       {/* Hover overlay effect */}
                       <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-500 z-10 pointer-events-none" />
-                      
+
                       {/* === REPLACE WITH YOUR PHOTO ===
                            Put your photo in /public/avatar.jpg and uncomment below:
                            <img src="/avatar.jpg" alt="Illusion1" className="w-full h-full object-cover" />
@@ -137,7 +137,7 @@ export default function Hero() {
 
                   {/* 3D Orbital System */}
                   <div className="absolute inset-0 pointer-events-none" style={{ transformStyle: "preserve-3d", transform: "rotateX(65deg) rotateY(-15deg)" }}>
-                    
+
                     {/* Visual Orbit Ring */}
                     <div className="absolute -inset-6 sm:-inset-10 rounded-full border border-primary/20 shadow-[0_0_20px_rgba(6,182,212,0.1)]" />
 

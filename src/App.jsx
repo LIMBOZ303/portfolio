@@ -8,6 +8,7 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
+import Audioplayer from './components/Audioplayer'
 
 /* ===== MAIN APP COMPONENT =====
  * This is the root component that assembles all sections
@@ -29,6 +30,10 @@ function App() {
         <Contact />
       </main>
       <Footer />
+      <Audioplayer
+        title="Illusion Coding Mode"
+        artist="Illusion1"
+      />
     </div>
   )
 }
