@@ -55,8 +55,8 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? 'bg-dark-900/80 backdrop-blur-xl border-b border-primary/10 shadow-lg shadow-primary/5'
-          : 'bg-transparent'
+        ? 'bg-dark-900/80 backdrop-blur-xl border-b border-primary/10 shadow-lg shadow-primary/5'
+        : 'bg-transparent'
         }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -80,8 +80,8 @@ export default function Navbar() {
                 href={link.href}
                 onClick={(e) => handleClick(e, link.href)}
                 className={`px-3 py-2 text-sm rounded-lg transition-all duration-200 ${activeSection === link.href.substring(1)
-                    ? 'text-primary bg-primary/10'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-dark-600/50'
+                  ? 'text-primary bg-primary/10'
+                  : 'text-text-secondary hover:text-text-primary hover:bg-dark-600/50'
                   }`}
               >
                 {link.name}
@@ -89,8 +89,9 @@ export default function Navbar() {
             ))}
             {/* === EDIT CV DOWNLOAD LINK HERE === */}
             <a
-              href="#"
+              href={`${import.meta.env.BASE_URL}NGUYEN_VAN_CUONGCV.pdf`}
               className="ml-3 px-4 py-2 text-sm font-medium bg-gradient-to-r from-primary to-accent text-white rounded-lg hover:opacity-90 transition-opacity flex items-center gap-2"
+              download="NGUYEN_VAN_CUONGCV.pdf"
             >
               <Download size={14} />
               Tải CV
@@ -125,8 +126,8 @@ export default function Navbar() {
                   href={link.href}
                   onClick={(e) => handleClick(e, link.href)}
                   className={`block px-4 py-2.5 rounded-lg text-sm transition-all ${activeSection === link.href.substring(1)
-                      ? 'text-primary bg-primary/10'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-dark-600/50'
+                    ? 'text-primary bg-primary/10'
+                    : 'text-text-secondary hover:text-text-primary hover:bg-dark-600/50'
                     }`}
                 >
                   {link.name}

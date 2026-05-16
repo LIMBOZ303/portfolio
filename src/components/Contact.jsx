@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Rocket } from 'lucide-react'
 import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa'
+import emailjs from '@emailjs/browser'
 
 /* ===== CONTACT SECTION =====
  * Contact form and social links
@@ -28,6 +29,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const validate = () => {
     const newErrors = {}
@@ -42,21 +44,49 @@ export default function Contact() {
     return newErrors
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
     const newErrors = validate()
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
       return
     }
+
     setErrors({})
-    // === ADD YOUR FORM SUBMISSION LOGIC HERE ===
-    // For now, just show success state
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
-      setFormData({ name: '', email: '', message: '' })
-    }, 3000)
+    setLoading(true)
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          time: new Date().toLocaleString('vi-VN'),
+        },
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        }
+      )
+
+      setSubmitted(true)
+
+      setTimeout(() => {
+        setSubmitted(false)
+        setFormData({ name: '', email: '', message: '' })
+      }, 3000)
+    } catch (error) {
+      console.error('EmailJS error:', error)
+
+      setErrors({
+        submit: 'Gửi tin nhắn thất bại. Vui lòng thử lại sau.',
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleChange = (e) => {
@@ -243,11 +273,18 @@ export default function Contact() {
                   {/* Submit */}
                   <button
                     type="submit"
-                    className="w-full py-3 bg-gradient-to-r from-primary to-cyan-400 text-white font-medium rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center justify-center gap-2"
+                    disabled={loading}
+                    className="w-full py-3 bg-gradient-to-r from-primary to-cyan-400 text-white font-medium rounded-xl hover:shadow-lg hover:shadow-primary/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     <Send size={16} />
-                    Gửi Tin Nhắn
+                    {loading ? 'Đang gửi...' : 'Gửi Tin Nhắn'}
                   </button>
+
+                  {errors.submit && (
+                    <p className="text-sm text-red-400 flex items-center gap-1">
+                      <AlertCircle size={14} /> {errors.submit}
+                    </p>
+                  )}
                 </form>
               )}
             </div>
