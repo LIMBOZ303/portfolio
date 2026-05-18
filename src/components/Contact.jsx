@@ -80,10 +80,19 @@ export default function Contact() {
       }, 3000)
     } catch (error) {
       console.error('EmailJS error:', error)
-      const errorMsg = error?.text || error?.message || 'Lỗi mạng hoặc bị chặn bởi trình duyệt'
+      const isBlocked = !error?.text && !error?.message
 
       setErrors({
-        submit: `Gửi thất bại: ${errorMsg}. Vui lòng thử lại.`,
+        submit: isBlocked ? (
+          <span>
+            Kết nối bị chặn (thường do cài đặt mạng hoặc chặn quảng cáo). Vui lòng{' '}
+            <a href="mailto:nguyencuong.20082009@gmail.com" className="underline font-medium hover:text-red-300 transition-colors">
+              gửi email trực tiếp
+            </a> cho tôi.
+          </span>
+        ) : (
+          `Gửi thất bại: ${error?.text || error?.message}. Vui lòng thử lại.`
+        ),
       })
     } finally {
       setLoading(false)
@@ -284,9 +293,10 @@ export default function Contact() {
                   </button>
 
                   {errors.submit && (
-                    <p className="text-sm text-red-400 flex items-center gap-1">
-                      <AlertCircle size={14} /> {errors.submit}
-                    </p>
+                    <div className="text-sm text-red-400 flex items-start gap-2 bg-red-400/10 p-3.5 rounded-xl border border-red-400/20 leading-relaxed">
+                      <AlertCircle size={16} className="shrink-0 mt-0.5" />
+                      <div>{errors.submit}</div>
+                    </div>
                   )}
                 </form>
               )}
