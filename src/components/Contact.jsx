@@ -65,7 +65,7 @@ export default function Contact() {
           name: formData.name,
           email: formData.email,
           message: formData.message,
-          time: new Date().toLocaleString('vi-VN'),
+          time: new Date().toLocaleString(),
         },
         {
           publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
@@ -80,9 +80,10 @@ export default function Contact() {
       }, 3000)
     } catch (error) {
       console.error('EmailJS error:', error)
+      const errorMsg = error?.text || error?.message || 'Lỗi mạng hoặc bị chặn bởi trình duyệt'
 
       setErrors({
-        submit: 'Gửi tin nhắn thất bại. Vui lòng thử lại sau.',
+        submit: `Gửi thất bại: ${errorMsg}. Vui lòng thử lại.`,
       })
     } finally {
       setLoading(false)
