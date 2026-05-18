@@ -217,11 +217,12 @@ export default function Contact() {
                       id="contact-name"
                       type="text"
                       name="name"
+                      autoComplete="name"
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Tên của bạn"
                       className={`w-full px-4 py-3 rounded-xl bg-dark-700/50 border ${errors.name ? 'border-red-500/50' : 'border-dark-500/50 focus:border-primary/50'
-                        } text-text-primary placeholder:text-text-muted/50 outline-none transition-colors text-sm`}
+                        } text-text-primary placeholder:text-text-muted/50 outline-none transition-colors text-base sm:text-sm`}
                     />
                     {errors.name && (
                       <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
@@ -237,11 +238,12 @@ export default function Contact() {
                       id="contact-email"
                       type="email"
                       name="email"
+                      autoComplete="email"
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="email-cua-ban@example.com"
                       className={`w-full px-4 py-3 rounded-xl bg-dark-700/50 border ${errors.email ? 'border-red-500/50' : 'border-dark-500/50 focus:border-primary/50'
-                        } text-text-primary placeholder:text-text-muted/50 outline-none transition-colors text-sm`}
+                        } text-text-primary placeholder:text-text-muted/50 outline-none transition-colors text-base sm:text-sm`}
                     />
                     {errors.email && (
                       <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">
@@ -261,7 +263,7 @@ export default function Contact() {
                       placeholder="Nhập nội dung tin nhắn..."
                       rows={5}
                       className={`w-full px-4 py-3 rounded-xl bg-dark-700/50 border ${errors.message ? 'border-red-500/50' : 'border-dark-500/50 focus:border-primary/50'
-                        } text-text-primary placeholder:text-text-muted/50 outline-none transition-colors text-sm resize-none`}
+                        } text-text-primary placeholder:text-text-muted/50 outline-none transition-colors text-base sm:text-sm resize-none`}
                     />
                     {errors.message && (
                       <p className="mt-1.5 text-xs text-red-400 flex items-center gap-1">

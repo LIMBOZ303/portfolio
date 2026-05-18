@@ -134,7 +134,8 @@ export default function Navbar() {
                 </a>
               ))}
               <a
-                href="#"
+                href={`${import.meta.env.BASE_URL}NGUYEN_VAN_CUONGCV.pdf`}
+                download="NGUYEN_VAN_CUONGCV.pdf"
                 className="block px-4 py-2.5 mt-2 text-sm font-medium bg-gradient-to-r from-primary to-accent text-white rounded-lg text-center"
               >
                 <Download size={14} className="inline mr-2" />
